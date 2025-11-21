@@ -111,7 +111,7 @@ class _HomeState extends State<Home> {
               onPressed: () {
                 Navigator.pushNamed(context, "/second");
               },
-              child: Text("next"),
+              child: Text("next Screen"),
             ),
           ],
         ),
