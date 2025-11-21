@@ -41,7 +41,7 @@ jobs:
 
     - name: Upload APK to Firebase App Distribution
       run: |
+        export GOOGLE_APPLICATION_CREDENTIALS=$GITHUB_WORKSPACE/firebase-key.json
         firebase appdistribution:distribute build/app/outputs/flutter-apk/app-release.apk \
-        --app 1:866321619450:android:64405a805f263919926c43 \
-        --groups "testers" \
-        --credentials $GITHUB_WORKSPACE/firebase-key.json
+          --app 1:866321619450:android:64405a805f263919926c43 \
+          --groups "testers"
