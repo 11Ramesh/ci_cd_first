@@ -42,6 +42,6 @@ jobs:
     - name: Upload APK to Firebase App Distribution
       run: |
         firebase appdistribution:distribute build/app/outputs/flutter-apk/app-release.apk \
-        --app YOUR_FIREBASE_APP_ID \
+        --app 1:866321619450:android:64405a805f263919926c43 \
         --groups "testers" \
-        --service-account $GITHUB_WORKSPACE/firebase-key.json
+        --service-account-file $GITHUB_WORKSPACE/firebase-key.json
