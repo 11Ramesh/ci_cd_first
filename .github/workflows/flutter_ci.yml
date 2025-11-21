@@ -44,4 +44,4 @@ jobs:
         firebase appdistribution:distribute build/app/outputs/flutter-apk/app-release.apk \
         --app 1:866321619450:android:64405a805f263919926c43 \
         --groups "testers" \
-        --service-account-file $GITHUB_WORKSPACE/firebase-key.json
+        --credentials $GITHUB_WORKSPACE/firebase-key.json
