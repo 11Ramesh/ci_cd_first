@@ -43,6 +43,6 @@ jobs:
       run: |
         firebase appdistribution:distribute build/app/outputs/flutter-apk/app-release.apk \
         --app 1:866321619450:android:64405a805f263919926c43 \
-        --groups "rameshmadhuranga02@gmail.com" \
+        --groups "testers" \
         --token ${{ secrets.FIREBASE_TOKEN }}
 
