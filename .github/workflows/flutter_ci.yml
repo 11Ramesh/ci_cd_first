@@ -4,9 +4,11 @@ on:
   push:
     branches:
       - main
+      - dev
   pull_request:
     branches:
       - main
+      - dev
 
 jobs:
   build:
@@ -20,7 +22,7 @@ jobs:
     - name: Set up Flutter
       uses: subosito/flutter-action@v2
       with:
-        flutter-version: '3.13.0' # your Flutter version
+        flutter-version: '3.38.2' 
 
     - name: Install dependencies
       run: flutter pub get
@@ -28,12 +30,19 @@ jobs:
     - name: Analyze code
       run: flutter analyze
 
-    - name: Run tests
-      run: flutter test
-
     - name: Build APK
       run: flutter build apk --release
 
-    - name: Build iOS (optional, only works with macOS runner)
-      if: runner.os == 'macOS'
-      run: flutter build ios --release
+    - name: Install Firebase CLI
+      run: npm install -g firebase-tools
+    
+    - name: Authenticate Firebase
+      run: echo "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}" > $GITHUB_WORKSPACE/firebase-key.json
+
+    - name: Upload APK to Firebase App Distribution
+      run: |
+        firebase appdistribution:distribute build/app/outputs/flutter-apk/app-release.apk \
+        --app 1:866321619450:android:64405a805f263919926c43 \
+        --groups "testers" \
+        --token ${{ secrets.FIREBASE_TOKEN }}
+

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_2/newScreen.dart';
+import 'package:flutter_application_2/new_screen.dart';
 import 'package:flutter_application_2/third.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'localization_helper.dart';
@@ -43,7 +43,6 @@ class _HomeState extends State<Home> {
 
     List<String> langList = appLocalization.getLanguages();
     selectedIndex = langList.indexOf(savedLang);
-    print("selectedIndex: $selectedIndex");
 
     setState(() {
       appLocalization.changeLanguage(savedLang);
@@ -86,7 +85,6 @@ class _HomeState extends State<Home> {
 
               onChanged: (value) {
                 if (value != null) {
-                  print(languages);
                   setState(() {
                     selectedIndex = value;
 
@@ -111,7 +109,7 @@ class _HomeState extends State<Home> {
               onPressed: () {
                 Navigator.pushNamed(context, "/second");
               },
-              child: Text("next"),
+              child: Text("next Screen"),
             ),
           ],
         ),
