@@ -32,3 +32,13 @@ jobs:
 
     - name: Build APK
       run: flutter build apk --release
+    
+    - name: Authenticate Firebase
+      run: echo "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}" > $GITHUB_WORKSPACE/firebase-key.json
+
+    - name: Upload APK to Firebase App Distribution
+      run: |
+        firebase appdistribution:distribute build/app/outputs/flutter-apk/app-release.apk \
+        --app YOUR_FIREBASE_APP_ID \
+        --groups "testers" \
+        --service-account $GITHUB_WORKSPACE/firebase-key.json
