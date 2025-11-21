@@ -1,4 +1,4 @@
-import 'languageDetails.dart';
+import 'language_details.dart';
 class AppLocalization {
   final Map<String, String> languageNames = {
   "en": "English",
